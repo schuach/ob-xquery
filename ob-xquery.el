@@ -20,13 +20,12 @@
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
 ;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to the
-;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-;; Boston, MA 02110-1301, USA.
-
-;;; Commentary:
-
+;; You should have received a copy of the GNU General Public License along with
+;; GNU Emacs; see the file COPYING. If not, see <https://www.gnu.org/licenses/>.
+;;
+;;
+;;;;; Commentary:
+;;
 ;; This file is not intended to ever be loaded by org-babel, rather it is a
 ;; template for use in adding new language support to Org-babel. Good first
 ;; steps are to copy this file to a file named by the language you are adding,
@@ -127,7 +126,7 @@ This function is called by `org-babel-execute-src-block'."
   (message "executing xquery source code block")
   (let* (
          (basexdb (or (cdr (assq :db params)) nil))
-         (preamble (or (cdr (assq :preamble params)) ""))
+         (preamble (or (cdr (assq :prolog params)) ""))
          (in-file (org-babel-temp-file "xquery-"))
          (out-file (org-babel-temp-file "xquery-output-"))
          (basexcmd (concat "basex"
