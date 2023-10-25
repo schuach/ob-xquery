@@ -121,7 +121,8 @@
 ;; arguments which you feel may be useful -- all header arguments
 ;; specified by the user will be available in the PARAMS variable.
 (defun org-babel-execute:xquery (body params)
-  "Execute a block of xquery with org-babel using basex.
+  "Execute BODY of xquery code with org-babel using basex.
+PARAMS are the name of the basex database and an optional preamble.
 This function is called by `org-babel-execute-src-block'."
   (message "executing xquery source code block")
   (let* (
@@ -129,7 +130,8 @@ This function is called by `org-babel-execute-src-block'."
          (preamble (or (cdr (assq :prolog params)) ""))
          (in-file (org-babel-temp-file "xquery-"))
          (out-file (org-babel-temp-file "xquery-output-"))
-         (basexcmd (concat "basex"
+         (basexcmd (concat "basex "
+                           "-s indent=yes "
                            (if basexdb
                                (concat " -i " basexdb)
                              "")
